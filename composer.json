@@ -1,5 +1,5 @@
 {
-	"name": "plibv4/longeststring",
+	"name": "plibv4/assert",
 	"autoload": {
         "classmap": ["src/"]
     }
