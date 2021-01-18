@@ -1,0 +1,6 @@
+{
+	"name": "plibv4/longeststring",
+	"autoload": {
+        "classmap": ["src/"]
+    }
+}
