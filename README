@@ -1,0 +1,7 @@
+plibv4/Assert
+
+Assert's purpose is to replace the usual load of code people (never) write to
+check for typical errors in variables, such as existing files, if a parameter is
+within a possible range of allowed values and so on.
+
+It cannot be considered even remotely complete. Don't use yet.
