@@ -35,4 +35,23 @@ class Assert {
 			throw new InvalidArgumentException($message);
 		}
 	}
+	
+	static function fileExists($value) {
+		if(!file_exists($value)) {
+			throw new InvalidArgumentException("filename ".$value." does not exist");
+		}
+	}
+	
+	static function isFile($value) {
+		if(!is_file($value)) {
+			throw new InvalidArgumentException($value." is not a file");
+		}
+	}
+	
+	static function isDir($value) {
+		if(!is_dir($value)) {
+			throw new InvalidArgumentException($value." is not a directory");
+		}
+	}
+
 }

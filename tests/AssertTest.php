@@ -36,5 +36,32 @@ class AssertTest extends TestCase {
 		$this->expectException(InvalidArgumentException::class);
 		Assert::isClassConstant("AssertTest", 15);
 	}
+	
+	function testAssertFileExists() {
+		$this->assertEquals(NULL, Assert::fileExists(__DIR__));
+	}
+
+	function testAssertFileDoesNotExists() {
+		$this->expectException(InvalidArgumentException::class);
+		Assert::fileExists("testing");
+	}
+
+	function testAssertIsFile() {
+		$this->assertEquals(NULL, Assert::isFile(__DIR__."/AssertTest.php"));
+	}
+
+	function testAssertIsNoFile() {
+		$this->expectException(InvalidArgumentException::class);
+		Assert::isFile(__DIR__);
+	}
+
+	function testAssertIsDir() {
+		$this->assertEquals(NULL, Assert::isDir(__DIR__));
+	}
+
+	function testAssertIsNoDir() {
+		$this->expectException(InvalidArgumentException::class);
+		Assert::isDir(__DIR__."/AssertTest.php");
+	}
 
 }
