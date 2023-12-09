@@ -13,7 +13,7 @@
  */
 class Assert {
 	static function isEnum($value, array $allowed) {
-		if(!in_array($value, $allowed)) {
+		if(!in_array($value, $allowed, TRUE)) {
 			throw new InvalidArgumentException("value ".$value." outside of set of allowed values (".implode(", ", $allowed).")");
 		}
 	}

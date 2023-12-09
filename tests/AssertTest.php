@@ -27,6 +27,13 @@ class AssertTest extends TestCase {
 		$this->expectException(InvalidArgumentException::class);
 		Assert::isEnum($value, $enum);
 	}
+
+	function testAssertEnumType() {
+		$value = "four";
+		$enum = array(0, 1, 2, 3, 4);
+		$this->expectException(InvalidArgumentException::class);
+		Assert::isEnum($value, $enum);
+	}
 	
 	function testAssertClassConstant() {
 		$this->assertEquals(NULL, Assert::isClassConstant("AssertTest", 1));
