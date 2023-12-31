@@ -12,20 +12,20 @@
  * @author hm
  */
 class Assert {
-	static function isEnum($value, array $allowed) {
+	static function isEnum($value, array $allowed): void {
 		if(!in_array($value, $allowed, TRUE)) {
 			throw new InvalidArgumentException("value ".$value." outside of set of allowed values (".implode(", ", $allowed).")");
 		}
 	}
 	
-	static function isClassConstant($class, $value, string $parameterName=NULL) {
+	static function isClassConstant(string $class, mixed $value, string $parameterName=NULL): void {
 		$reflection = new ReflectionClass($class);
 		$constants = $reflection->getConstants();
-		if(!in_array($value, $constants)) {
+		if(!in_array($value, $constants, TRUE)) {
 			if($parameterName==NULL) {
-				$message = "value ".$value." not a class constant, allowed values are ";
+				$message = "value '".$value."' not a class constant of ".$class.", allowed values are ";
 			} else {
-				$message = "\$".$parameterName." not a class constant, allowed values are ";
+				$message = "\$".$parameterName." not a class constant of ".$class.", allowed values are ";
 			}
 			$allowed = array();
 			foreach($constants as $key => $value) {
@@ -36,19 +36,19 @@ class Assert {
 		}
 	}
 	
-	static function fileExists($value) {
+	static function fileExists(string $value): void {
 		if(!file_exists($value)) {
 			throw new InvalidArgumentException("filename ".$value." does not exist");
 		}
 	}
 	
-	static function isFile($value) {
+	static function isFile(string $value): void {
 		if(!is_file($value)) {
 			throw new InvalidArgumentException($value." is not a file");
 		}
 	}
 	
-	static function isDir($value) {
+	static function isDir(string $value):void {
 		if(!is_dir($value)) {
 			throw new InvalidArgumentException($value." is not a directory");
 		}
