@@ -13,6 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @author hm
  */
 class AssertTest extends TestCase {
+	const TEST0 = 0;
 	const TEST1 = 1;
 	const TEST2 = 2;
 	function testAssertEnumValid() {
@@ -27,7 +28,11 @@ class AssertTest extends TestCase {
 		$this->expectException(InvalidArgumentException::class);
 		Assert::isEnum($value, $enum);
 	}
-
+	/**
+	 * loose comparison may cast the string "four" to int 0, if strict 
+	 * comparison is not used on in_array; this behaviour is changed
+	 * since PHP 8.
+	 */
 	function testAssertEnumType() {
 		$value = "four";
 		$enum = array(0, 1, 2, 3, 4);
@@ -38,10 +43,19 @@ class AssertTest extends TestCase {
 	function testAssertClassConstant() {
 		$this->assertEquals(NULL, Assert::isClassConstant("AssertTest", 1));
 	}
-
+	
 	function testAssertNotClassConstant() {
 		$this->expectException(InvalidArgumentException::class);
 		Assert::isClassConstant("AssertTest", 15);
+	}
+
+	/**
+	 * Same as testAssertEnumType
+	 */
+	function testAssertClassConstantType() {
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage("value 'four' not a class constant of AssertTest, allowed values are AssertTest::TEST0, AssertTest::TEST1, AssertTest::TEST2");
+		$this->assertEquals(NULL, Assert::isClassConstant(AssertTest::class, "four"));
 	}
 	
 	function testAssertFileExists() {
