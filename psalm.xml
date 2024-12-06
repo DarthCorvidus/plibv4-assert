@@ -8,7 +8,7 @@
     findUnusedBaselineEntry="true"
     findUnusedCode="true"
 >
-<issueHandlers>
+	<issueHandlers>
 		<UnusedClass>
 			<errorLevel type="suppress">
 				<!-- this is a class library, therefore some code is unused -->
