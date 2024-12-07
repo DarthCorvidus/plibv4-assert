@@ -1,35 +1,41 @@
 <?php
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Assert
  *
  * @author hm
  */
 class Assert {
-	static function isEnum($value, array $allowed): void {
+	/**
+	 * 
+	 * @param mixed $value
+	 * @param list<mixed> $allowed
+	 * @return void
+	 * @throws InvalidArgumentException
+	 */
+	static function isEnum(mixed $value, array $allowed): void {
 		if(!in_array($value, $allowed, TRUE)) {
-			throw new InvalidArgumentException("value ".$value." outside of set of allowed values (".implode(", ", $allowed).")");
+			/**
+			 * @psalm-suppress MixedArgumentTypeCoercion
+			 */
+			throw new InvalidArgumentException("value ".(string)$value." outside of set of allowed values (".implode(", ", $allowed).")");
 		}
 	}
 	
 	static function isClassConstant(string $class, mixed $value, string $parameterName=NULL): void {
+		/**
+		 * @psalm-suppress ArgumentTypeCoercion
+		 */
 		$reflection = new ReflectionClass($class);
 		$constants = $reflection->getConstants();
 		if(!in_array($value, $constants, TRUE)) {
 			if($parameterName==NULL) {
-				$message = "value '".$value."' not a class constant of ".$class.", allowed values are ";
+				$message = "value '".(string)$value."' not a class constant of ".$class.", allowed values are ";
 			} else {
 				$message = "\$".$parameterName." not a class constant of ".$class.", allowed values are ";
 			}
 			$allowed = array();
-			foreach($constants as $key => $value) {
-				$allowed[] = $class."::".$key;
+			foreach(array_keys($constants) as $value) {
+				$allowed[] = $class."::".$value;
 			}
 			$message .= implode(", ", $allowed);
 			throw new InvalidArgumentException($message);
@@ -48,7 +54,7 @@ class Assert {
 		}
 	}
 	
-	static function isDir(string $value):void {
+	static function isDir(string $value): void {
 		if(!is_dir($value)) {
 			throw new InvalidArgumentException($value." is not a directory");
 		}
