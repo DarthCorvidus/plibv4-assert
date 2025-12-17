@@ -12,7 +12,6 @@
 	<issueHandlers>
 		<UnusedMethod>
 			<errorLevel type="suppress">
-				<!-- this is a class library, therefore some code is unused -->
 				<directory name="tests" />
 			</errorLevel>
 		</UnusedMethod>
