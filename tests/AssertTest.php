@@ -1,6 +1,10 @@
 <?php
 declare(strict_types=1);
+
+namespace plibv4\assert;
 use PHPUnit\Framework\TestCase;
+use InvalidArgumentException;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -41,12 +45,12 @@ class AssertTest extends TestCase {
 	}
 	
 	function testAssertClassConstant() {
-		$this->assertEquals(NULL, Assert::isClassConstant("AssertTest", 1));
+		$this->assertEquals(NULL, Assert::isClassConstant(self::class, 1));
 	}
 	
 	function testAssertNotClassConstant() {
 		$this->expectException(InvalidArgumentException::class);
-		Assert::isClassConstant("AssertTest", 15);
+		Assert::isClassConstant(self::class, 15);
 	}
 
 	/**
@@ -54,7 +58,7 @@ class AssertTest extends TestCase {
 	 */
 	function testAssertClassConstantType() {
 		$this->expectException(InvalidArgumentException::class);
-		$this->expectExceptionMessage("value 'four' not a class constant of AssertTest, allowed values are AssertTest::TEST0, AssertTest::TEST1, AssertTest::TEST2");
+		$this->expectExceptionMessage("value 'four' not a class constant of plibv4\assert\AssertTest, allowed values are plibv4\assert\AssertTest::TEST0, plibv4\assert\AssertTest::TEST1, plibv4\assert\AssertTest::TEST2");
 		$this->assertEquals(NULL, Assert::isClassConstant(AssertTest::class, "four"));
 	}
 	

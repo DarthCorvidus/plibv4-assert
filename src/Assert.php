@@ -1,10 +1,14 @@
 <?php
+namespace plibv4\assert;
+use InvalidArgumentException;
+use ReflectionClass;
+
 /**
  * Description of Assert
  *
  * @author hm
  */
-class Assert {
+final class Assert {
 	/**
 	 * 
 	 * @param mixed $value
