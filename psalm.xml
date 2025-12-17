@@ -9,13 +9,13 @@
     findUnusedBaselineEntry="true"
     findUnusedCode="true"
 >
-	<issueHandlers>
-		<UnusedMethod>
-			<errorLevel type="suppress">
-				<directory name="tests" />
-			</errorLevel>
-		</UnusedMethod>
-	</issueHandlers>
+    <issueHandlers>
+        <UnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="tests" />
+            </errorLevel>
+        </UnusedMethod>
+    </issueHandlers>
 
     <projectFiles>
         <directory name="src" />
