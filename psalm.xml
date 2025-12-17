@@ -10,16 +10,17 @@
     findUnusedCode="true"
 >
 	<issueHandlers>
-		<UnusedClass>
+		<UnusedMethod>
 			<errorLevel type="suppress">
 				<!-- this is a class library, therefore some code is unused -->
-				<file name="src/Assert.php" />
+				<directory name="tests" />
 			</errorLevel>
-		</UnusedClass>
+		</UnusedMethod>
 	</issueHandlers>
 
     <projectFiles>
         <directory name="src" />
+		<directory name="tests" />
         <ignoreFiles>
             <directory name="vendor" />
         </ignoreFiles>

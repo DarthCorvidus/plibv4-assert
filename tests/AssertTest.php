@@ -16,17 +16,17 @@ use InvalidArgumentException;
  *
  * @author hm
  */
-class AssertTest extends TestCase {
+final class AssertTest extends TestCase {
 	const TEST0 = 0;
 	const TEST1 = 1;
 	const TEST2 = 2;
-	function testAssertEnumValid() {
+	function testAssertEnumValid():void {
 		$value = 1;
 		$enum = array(1, 2, 3, 4);
 		$this->assertEquals(NULL, Assert::isEnum($value, $enum));
 	}
 	
-	function testAssertEnumInvalid() {
+	function testAssertEnumInvalid():void {
 		$value = 5;
 		$enum = array(1, 2, 3, 4);
 		$this->expectException(InvalidArgumentException::class);
@@ -37,18 +37,18 @@ class AssertTest extends TestCase {
 	 * comparison is not used on in_array; this behaviour is changed
 	 * since PHP 8.
 	 */
-	function testAssertEnumType() {
+	function testAssertEnumType():void {
 		$value = "four";
 		$enum = array(0, 1, 2, 3, 4);
 		$this->expectException(InvalidArgumentException::class);
 		Assert::isEnum($value, $enum);
 	}
 	
-	function testAssertClassConstant() {
+	function testAssertClassConstant():void {
 		$this->assertEquals(NULL, Assert::isClassConstant(self::class, 1));
 	}
 	
-	function testAssertNotClassConstant() {
+	function testAssertNotClassConstant():void {
 		$this->expectException(InvalidArgumentException::class);
 		Assert::isClassConstant(self::class, 15);
 	}
@@ -56,37 +56,36 @@ class AssertTest extends TestCase {
 	/**
 	 * Same as testAssertEnumType
 	 */
-	function testAssertClassConstantType() {
+	function testAssertClassConstantType():void {
 		$this->expectException(InvalidArgumentException::class);
 		$this->expectExceptionMessage("value 'four' not a class constant of plibv4\assert\AssertTest, allowed values are plibv4\assert\AssertTest::TEST0, plibv4\assert\AssertTest::TEST1, plibv4\assert\AssertTest::TEST2");
 		$this->assertEquals(NULL, Assert::isClassConstant(AssertTest::class, "four"));
 	}
 	
-	function testAssertFileExists() {
+	function testAssertFileExists():void {
 		$this->assertEquals(NULL, Assert::fileExists(__DIR__));
 	}
 
-	function testAssertFileDoesNotExists() {
+	function testAssertFileDoesNotExists():void {
 		$this->expectException(InvalidArgumentException::class);
 		Assert::fileExists("testing");
 	}
 
-	function testAssertIsFile() {
+	function testAssertIsFile():void {
 		$this->assertEquals(NULL, Assert::isFile(__DIR__."/AssertTest.php"));
 	}
 
-	function testAssertIsNoFile() {
+	function testAssertIsNoFile():void {
 		$this->expectException(InvalidArgumentException::class);
 		Assert::isFile(__DIR__);
 	}
 
-	function testAssertIsDir() {
+	function testAssertIsDir():void {
 		$this->assertEquals(NULL, Assert::isDir(__DIR__));
 	}
 
-	function testAssertIsNoDir() {
+	function testAssertIsNoDir():void {
 		$this->expectException(InvalidArgumentException::class);
 		Assert::isDir(__DIR__."/AssertTest.php");
 	}
-
 }
