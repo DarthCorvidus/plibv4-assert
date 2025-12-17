@@ -5,17 +5,12 @@
         "classmap": ["src/"]
     },
 	"require": {
-		"vimeo/psalm": "^6.x-dev",
-		"phpunit/phpunit": "^9.6.x-dev"
+		"vimeo/psalm": "^6",
+		"phpunit/phpunit": "^9"
 	},
 	"scripts": {
 		"test": "./vendor/bin/phpunit --bootstrap vendor/autoload.php tests",
 		"testdox": "./vendor/bin/phpunit --bootstrap vendor/autoload.php --testdox --colors=always tests",
 		"psalm": "./vendor/bin/psalm --show-info=true --no-cache"
-	},
-	"config": {
-		"platform": {
-			"php": "8.2"
-		}
 	}
 }
