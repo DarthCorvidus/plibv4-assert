@@ -22,14 +22,22 @@ jobs:
           php-version: ${{ matrix.php }}
           tools: composer
 
+      - name: Ensure Composer cache dir exists
+        run: mkdir -p $(composer config cache-dir)
+
       - name: Cache Composer downloads
         uses: actions/cache@v3
         with:
-          path: ~/.composer/cache
+          path: $(composer config cache-dir)
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
 
-      - run: composer install --prefer-dist --no-progress
-      - run: composer run-script testdox
-      - run: composer run-script psalm
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
+      - name: Run test suite
+        run: composer run-script testdox
+
+      - name: Run Psalm
+        run: composer run-script psalm
