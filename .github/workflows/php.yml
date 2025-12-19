@@ -1,3 +1,12 @@
+name: PHP Composer
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:   # optional: manuelles Starten im GitHub-UI
+
 jobs:
   build:
     runs-on: ubuntu-latest
