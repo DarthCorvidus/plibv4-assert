@@ -22,13 +22,15 @@ jobs:
           php-version: ${{ matrix.php }}
           tools: composer
 
-      - name: Ensure Composer cache dir exists
-        run: mkdir -p $(composer config cache-dir)
+      #Get composer cache dir from composer
+      - name: Get Composer cache dir
+        id: composer-cache-dir
+        run: echo "dir=$(composer config cache-dir)" >> $GITHUB_OUTPUT
 
       - name: Cache Composer downloads
         uses: actions/cache@v3
         with:
-          path: $(composer config cache-dir)
+          path: ${{ steps.composer-cache-dir.outputs.dir }}
           key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-composer-
