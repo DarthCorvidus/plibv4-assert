@@ -15,7 +15,8 @@ jobs:
         php: ['8.2', '8.3.16' ]
     steps:
       - uses: actions/checkout@v4
-
+      # needed because Psalm won't run with PHP 8.3.6 as supplied by Ubuntu;
+      # installs newer PHP version.
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
