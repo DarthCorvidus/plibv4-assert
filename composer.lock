@@ -4,8 +4,9 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ae8608c2c37c737c81d1ca789b336139",
-    "packages": [
+    "content-hash": "65f8739685dd23c4770d9bd561be875c",
+    "packages": [],
+    "packages-dev": [
         {
             "name": "amphp/amp",
             "version": "3.x-dev",
@@ -2519,12 +2520,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "46b66bc57065961b94f31cd28ca6712db5194c1a"
+                "reference": "bb5cc7d4f6db2c4c80ea8bdb8b864d05432cbc2f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/46b66bc57065961b94f31cd28ca6712db5194c1a",
-                "reference": "46b66bc57065961b94f31cd28ca6712db5194c1a",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bb5cc7d4f6db2c4c80ea8bdb8b864d05432cbc2f",
+                "reference": "bb5cc7d4f6db2c4c80ea8bdb8b864d05432cbc2f",
                 "shasum": ""
             },
             "require": {
@@ -2622,7 +2623,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-12-17T15:06:30+00:00"
+            "time": "2025-12-20T07:25:05+00:00"
         },
         {
             "name": "psr/container",
@@ -5059,7 +5060,6 @@
             "time": "2025-10-29T15:56:20+00:00"
         }
     ],
-    "packages-dev": [],
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": [],
