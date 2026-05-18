@@ -25,14 +25,14 @@ final class Assert {
 		}
 	}
 	
-	static function isClassConstant(string $class, mixed $value, string $parameterName=NULL): void {
+	static function isClassConstant(string $class, mixed $value, ?string $parameterName = null): void {
 		/**
 		 * @psalm-suppress ArgumentTypeCoercion
 		 */
 		$reflection = new ReflectionClass($class);
 		$constants = $reflection->getConstants();
 		if(!in_array($value, $constants, TRUE)) {
-			if($parameterName==NULL) {
+			if($parameterName === null) {
 				$message = "value '".(string)$value."' not a class constant of ".$class.", allowed values are ";
 			} else {
 				$message = "\$".$parameterName." not a class constant of ".$class.", allowed values are ";
