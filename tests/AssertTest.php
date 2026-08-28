@@ -50,7 +50,14 @@ final class AssertTest extends TestCase {
 	
 	function testAssertNotClassConstant():void {
 		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage("value '15' not a class constant of plibv4\assert\AssertTest, allowed values are plibv4\assert\AssertTest::TEST0, plibv4\assert\AssertTest::TEST1, plibv4\assert\AssertTest::TEST2");
 		Assert::isClassConstant(self::class, 15);
+	}
+
+	function testAssertNotClassConstantNamed():void {
+		$this->expectException(InvalidArgumentException::class);
+		$this->expectExceptionMessage('$format not a class constant of plibv4\assert\AssertTest, allowed values are plibv4\assert\AssertTest::TEST0, plibv4\assert\AssertTest::TEST1, plibv4\assert\AssertTest::TEST2');
+		Assert::isClassConstant(self::class, 15, "format");
 	}
 
 	/**
